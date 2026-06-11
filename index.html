@@ -6,7 +6,7 @@
 <title>P1 Creative — Patient Acquisition for Elite Medical Practices</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -42,10 +42,14 @@
   ::-webkit-scrollbar-track{ background:var(--dark); }
   ::-webkit-scrollbar-thumb{ background:#2a2a2a; }
 
-  .grotesk { font-family:'Barlow Condensed', sans-serif; }
+  .grotesk { font-family:'Geist', 'PP Neue Montreal', sans-serif; }
   .inter { font-family:'Inter', sans-serif; }
 
   .gradient-text{
+    font-family:'Instrument Serif', 'Geist', serif;
+    font-style:italic;
+    font-weight:400;
+    letter-spacing:-0.005em;
     background:linear-gradient(135deg,#FF3B30 0%,#ff6b60 50%,#ffffff 100%);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
@@ -77,10 +81,11 @@
     mix-blend-mode:screen;
   }
   .nav-brand{
+    font-family:'Geist', 'PP Neue Montreal', sans-serif;
     color:var(--white);
-    letter-spacing:0.22em;
-    font-size:15px;
-    font-weight:700;
+    letter-spacing:-0.015em;
+    font-size:17px;
+    font-weight:600;
   }
   .nav-links{
     display:flex; align-items:center; gap:36px;
@@ -160,15 +165,19 @@
   }
   .hero-h1{
     position:relative; z-index:2;
-    font-family:'Barlow Condensed', sans-serif;
-    font-size:clamp(2.6rem, 6.5vw, 5.2rem);
+    font-family:'Geist', 'PP Neue Montreal', sans-serif;
+    font-size:clamp(2.4rem, 5.6vw, 4.6rem);
     color:var(--white);
-    font-weight:900;
-    line-height:0.98;
-    letter-spacing:-0.01em;
-    text-transform:uppercase;
-    max-width:920px;
+    font-weight:800;
+    line-height:1;
+    letter-spacing:-0.035em;
+    max-width:960px;
     margin:0 0 24px;
+  }
+  .hero-h1 .gradient-text{
+    font-size:1.05em;
+    letter-spacing:-0.02em;
+    margin:0 0.04em;
   }
   .hero-sub{
     position:relative; z-index:2;
@@ -226,9 +235,9 @@
     gap:48px; max-width:1100px; margin:0 auto;
   }
   .logo-pill{
-    font-family:'Barlow Condensed', sans-serif;
-    font-size:18px; font-weight:800;
-    letter-spacing:0.18em; text-transform:uppercase;
+    font-family:'Geist', 'PP Neue Montreal', sans-serif;
+    font-size:15px; font-weight:600;
+    letter-spacing:-0.005em;
     color:rgba(255,255,255,0.4);
     transition:color 0.2s;
   }
@@ -244,15 +253,18 @@
     margin-bottom:18px;
   }
   .section-title{
-    font-family:'Barlow Condensed', sans-serif;
-    font-size:clamp(2.4rem, 5.5vw, 4.4rem);
+    font-family:'Geist', 'PP Neue Montreal', sans-serif;
+    font-size:clamp(2.2rem, 4.8vw, 3.8rem);
     color:var(--white);
-    font-weight:900;
-    line-height:1;
-    letter-spacing:-0.01em;
-    text-transform:uppercase;
+    font-weight:800;
+    line-height:1.04;
+    letter-spacing:-0.035em;
     text-align:center;
     margin-bottom:18px;
+  }
+  .section-title .gradient-text{
+    font-size:1.04em;
+    letter-spacing:-0.02em;
   }
   .section-sub{
     font-size:17px; color:var(--muted);
@@ -292,13 +304,12 @@
     font-weight:700;
   }
   .fw-title{
-    font-family:'Barlow Condensed', sans-serif;
-    font-size:clamp(1.9rem, 3.6vw, 3rem);
+    font-family:'Geist', 'PP Neue Montreal', sans-serif;
+    font-size:clamp(1.7rem, 3vw, 2.5rem);
     color:var(--white);
-    font-weight:900;
-    line-height:1.05;
-    letter-spacing:-0.01em;
-    text-transform:uppercase;
+    font-weight:700;
+    line-height:1.1;
+    letter-spacing:-0.025em;
     margin-bottom:36px;
   }
   .fw-features{
@@ -354,24 +365,23 @@
   }
   .reel-bg{
     position:absolute; inset:0;
-    background-image:url('hero.png');
+    background-image:url('dr-hany.webp');
     background-size:cover;
-    background-position:65% 25%;
-    filter:grayscale(0.5) contrast(1.05) brightness(0.8);
+    background-position:center 30%;
+    filter:contrast(1.05) brightness(0.92) saturate(1.05);
   }
   .reel-overlay{
     position:absolute; inset:0;
-    background:linear-gradient(180deg, transparent 35%, rgba(0,0,0,0.85) 100%);
+    background:linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.92) 100%);
   }
   .reel-caption{
     position:absolute; left:14px; right:14px; bottom:60px;
     color:var(--white);
-    font-family:'Barlow Condensed', sans-serif;
-    font-size:18px; font-weight:800;
-    line-height:1.1;
-    text-transform:uppercase;
-    letter-spacing:0.01em;
-    text-shadow:0 2px 8px rgba(0,0,0,0.6);
+    font-family:'Geist', 'PP Neue Montreal', sans-serif;
+    font-size:16px; font-weight:700;
+    line-height:1.15;
+    letter-spacing:-0.015em;
+    text-shadow:0 2px 12px rgba(0,0,0,0.7);
   }
   .reel-meta{
     position:absolute; left:14px; right:14px; bottom:14px;
@@ -446,7 +456,7 @@
     font-weight:600;
   }
   .dash-metric-value{
-    font-family:'Barlow Condensed', sans-serif;
+    font-family:'Geist', 'PP Neue Montreal', sans-serif;
     font-size:22px; font-weight:900;
     color:var(--white);
     line-height:1;
@@ -646,13 +656,12 @@
     letter-spacing:0.12em; text-transform:uppercase;
   }
   .step-title{
-    font-family:'Barlow Condensed', sans-serif;
-    font-size:clamp(1.8rem, 3.2vw, 2.6rem);
-    font-weight:900;
+    font-family:'Geist', 'PP Neue Montreal', sans-serif;
+    font-size:clamp(1.6rem, 2.8vw, 2.2rem);
+    font-weight:700;
     color:var(--white);
-    line-height:1.05;
-    text-transform:uppercase;
-    letter-spacing:-0.005em;
+    line-height:1.1;
+    letter-spacing:-0.025em;
     margin-bottom:14px;
   }
   .step-desc{
@@ -681,13 +690,13 @@
   }
   .stat-card:hover{ background:var(--card-hover); border-color:var(--border-bright); }
   .stat-value{
-    font-family:'Barlow Condensed', sans-serif;
-    font-size:clamp(2.4rem, 5vw, 4rem);
-    font-weight:900;
+    font-family:'Geist', 'PP Neue Montreal', sans-serif;
+    font-size:clamp(2.2rem, 4.4vw, 3.4rem);
+    font-weight:800;
     line-height:1;
     margin-bottom:12px;
     color:var(--red);
-    letter-spacing:-0.01em;
+    letter-spacing:-0.035em;
   }
   .stat-label{
     font-size:13px; color:var(--muted);
@@ -696,13 +705,12 @@
 
   .results-cta{ text-align:center; margin-bottom:96px; }
   .results-cta-title{
-    font-family:'Barlow Condensed', sans-serif;
-    font-size:clamp(1.6rem, 3vw, 2.4rem);
+    font-family:'Geist', 'PP Neue Montreal', sans-serif;
+    font-size:clamp(1.5rem, 2.6vw, 2.1rem);
     color:var(--white);
-    font-weight:800;
-    line-height:1.15;
-    text-transform:uppercase;
-    letter-spacing:-0.005em;
+    font-weight:700;
+    line-height:1.2;
+    letter-spacing:-0.025em;
     margin-bottom:20px;
     max-width:760px; margin:0 auto 20px;
   }
@@ -739,7 +747,7 @@
     background:#1f1f1f;
     border:2px solid var(--red-border);
     display:flex; align-items:center; justify-content:center;
-    font-family:'Barlow Condensed', sans-serif;
+    font-family:'Geist', 'PP Neue Montreal', sans-serif;
     font-size:15px; font-weight:800;
     color:var(--white);
     flex-shrink:0;
@@ -765,13 +773,12 @@
   }
   .cta-h2{
     position:relative; z-index:2;
-    font-family:'Barlow Condensed', sans-serif;
-    font-size:clamp(2.6rem, 6.5vw, 5.5rem);
+    font-family:'Geist', 'PP Neue Montreal', sans-serif;
+    font-size:clamp(2.4rem, 5.4vw, 4.6rem);
     color:var(--white);
-    font-weight:900;
-    line-height:0.98;
-    letter-spacing:-0.01em;
-    text-transform:uppercase;
+    font-weight:800;
+    line-height:1.02;
+    letter-spacing:-0.035em;
     margin-bottom:24px;
   }
   .cta-sub{
@@ -929,7 +936,7 @@
         <div class="reel-wrap">
           <div class="reel-bg"></div>
           <div class="reel-overlay"></div>
-          <div class="reel-caption">3 questions to ask before any aesthetic procedure</div>
+          <div class="reel-caption">Confidence <em style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:0;">starts</em> here.</div>
           <div class="reel-stats">
             <div class="reel-stat">
               <div class="reel-stat-icon">♥</div>
