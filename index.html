@@ -109,15 +109,37 @@
   /* ─── HERO ─── */
   #hero{
     position:relative; overflow:hidden;
-    background:var(--dark);
+    background:#000;
     min-height:100vh;
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     text-align:center;
-    padding:140px 24px 80px;
+    padding:120px 24px 80px;
+  }
+  .hero-bg{
+    position:absolute; inset:0;
+    background-image:url('hero.png');
+    background-size:cover;
+    background-position:center 18%;
+    background-repeat:no-repeat;
+    filter:grayscale(1) contrast(1.08) brightness(0.78);
+    z-index:0;
+  }
+  .hero-vignette{
+    position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:
+      radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.85) 100%),
+      linear-gradient(to bottom, rgba(8,8,8,0.85) 0%, rgba(8,8,8,0.25) 18%, rgba(8,8,8,0.25) 60%, rgba(8,8,8,0.95) 100%);
   }
   .hero-ambient{
-    position:absolute; inset:0; pointer-events:none;
-    background:radial-gradient(ellipse at 50% 45%, rgba(255,59,48,0.12) 0%, transparent 65%);
+    position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:radial-gradient(ellipse at 50% 45%, rgba(255,59,48,0.16) 0%, transparent 60%);
+    mix-blend-mode:screen;
+  }
+  #hero > .hero-badge,
+  #hero > .hero-h1,
+  #hero > .hero-sub,
+  #hero > .hero-ctas{
+    text-shadow:0 2px 24px rgba(0,0,0,0.6);
   }
   .hero-badge{
     position:relative; z-index:2;
@@ -184,34 +206,6 @@
   }
   .btn-ghost:hover{ border-color:var(--white); background:rgba(255,255,255,0.04); }
   .btn-ghost .arrow{ color:var(--muted); }
-
-  /* Hero centerpiece — surgeon glowing portrait */
-  .hero-orb-wrap{
-    position:relative; z-index:2;
-    margin-top:60px;
-    width:min(320px, 75vw);
-    aspect-ratio:1/1;
-  }
-  .hero-orb-glow{
-    position:absolute; inset:-30%;
-    background:radial-gradient(circle, rgba(255,59,48,0.28) 0%, rgba(255,59,48,0.08) 45%, transparent 70%);
-    pointer-events:none;
-  }
-  .hero-orb-ring{
-    position:absolute; inset:0;
-    border-radius:50%;
-    border:1px solid rgba(255,59,48,0.18);
-  }
-  .hero-orb-ring.r2{ inset:-12%; border-color:rgba(255,255,255,0.05); }
-  .hero-orb-img{
-    position:absolute; inset:0;
-    width:100%; height:100%;
-    border-radius:50%;
-    object-fit:cover;
-    object-position:65% 25%;
-    filter:grayscale(1) contrast(1.1) brightness(1.05);
-    border:1.5px solid rgba(255,255,255,0.08);
-  }
 
   /* ─── LOGO BAR ─── */
   #logos{
@@ -883,6 +877,8 @@
 
 <!-- ═══════════════ HERO ═══════════════ -->
 <section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-vignette"></div>
   <div class="hero-ambient"></div>
   <div class="hero-badge">Patient Acquisition System</div>
   <h1 class="hero-h1">
@@ -898,12 +894,6 @@
     <a href="#results" class="btn-ghost">See Our Results <span class="arrow">›</span></a>
   </div>
 
-  <div class="hero-orb-wrap">
-    <div class="hero-orb-glow"></div>
-    <div class="hero-orb-ring r2"></div>
-    <div class="hero-orb-ring"></div>
-    <img src="hero.png" alt="Elite medical professional" class="hero-orb-img" />
-  </div>
 </section>
 
 <!-- ═══════════════ LOGOS ═══════════════ -->
