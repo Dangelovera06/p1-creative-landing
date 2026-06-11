@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>P1 Creative — We Turn Attention Into Appointments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --obsidian: #080808;
+      --carbon: #111111;
+      --graphite: #1F1F1F;
+      --platinum: #F5F5F5;
+      --silver: #A1A1AA;
+      --red: #FF3B30;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--obsidian);
+      color: var(--platinum);
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+      background: rgba(8,8,8,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo svg { width: 36px; height: 36px; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--silver);
+      text-decoration: none;
+      font-family: 'Barlow', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .btn-nav {
+      padding: 10px 22px;
+      border: 1.5px solid var(--white);
+      color: var(--white);
+      background: transparent;
+      font-family: 'Barlow', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-nav:hover {
+      background: var(--white);
+      color: var(--obsidian);
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      background: var(--obsidian);
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(8,8,8,0.96) 32%, rgba(8,8,8,0.15) 58%, rgba(8,8,8,0.4) 100%),
+        linear-gradient(to bottom, rgba(8,8,8,0) 50%, rgba(8,8,8,0.55) 100%);
+      z-index: 1;
+    }
+
+    /* Placeholder surgical imagery via CSS — swap for real photo */
+    .hero-bg-art {
+      position: absolute;
+      inset: 0;
+      background: var(--obsidian);
+      z-index: 0;
+    }
+
+    .hero-bg-art::after { display: none; }
+
+    /* Doctor silhouette SVG art */
+    .hero-doctor-art {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 58%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hero-doctor-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 70% 25%;
+      filter: grayscale(100%) contrast(1.1) brightness(1.05);
+    }
+
+    /* If no real image, show abstract art */
+    .hero-doctor-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 40%, #0d0d0d 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 48px 100px;
+      max-width: 760px;
+    }
+
+    .hero-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(64px, 8.5vw, 112px);
+      font-weight: 800;
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--silver);
+      line-height: 1.7;
+      margin-bottom: 44px;
+      max-width: 340px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 32px;
+      border: 1.5px solid var(--white);
+      color: var(--white);
+      background: transparent;
+      font-family: 'Barlow', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--white);
+      color: var(--obsidian);
+    }
+
+    .btn-primary .arrow {
+      font-size: 16px;
+      transition: transform 0.2s;
+    }
+
+    .btn-primary:hover .arrow { transform: translate(3px, -3px); }
+
+    /* ─── STATS BAR ─── */
+    #stats {
+      background: var(--carbon);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 48px 48px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+    }
+
+    .stat {
+      padding: 0 40px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat:first-child { padding-left: 0; }
+    .stat:last-child { border-right: none; }
+
+    .stat-value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--silver);
+    }
+
+    /* ─── SECTION BASE ─── */
+    section {
+      padding: 120px 48px;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 24px;
+    }
+
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--red);
+    }
+
+    .section-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(42px, 5vw, 72px);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 0.95;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .section-body {
+      font-size: 16px;
+      color: var(--silver);
+      line-height: 1.8;
+      max-width: 520px;
+    }
+
+    /* ─── SERVICES ─── */
+    #services {
+      background: var(--obsidian);
+    }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 72px;
+      gap: 48px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .service-card {
+      background: var(--obsidian);
+      padding: 48px 40px;
+      transition: background 0.3s;
+      cursor: default;
+    }
+
+    .service-card:hover { background: var(--carbon); }
+
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 28px;
+      color: var(--red);
+    }
+
+    .service-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      color: var(--silver);
+      line-height: 1.8;
+    }
+
+    /* ─── RESULTS ─── */
+    #results {
+      background: var(--carbon);
+    }
+
+    .results-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .results-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .result-card {
+      background: var(--carbon);
+      padding: 36px 32px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .result-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .result-label {
+      font-size: 13px;
+      color: var(--silver);
+      line-height: 1.6;
+    }
+
+    .results-copy { }
+
+    .results-copy .section-headline { margin-bottom: 24px; }
+    .results-copy .section-body { margin-bottom: 40px; }
+
+    /* ─── PROCESS ─── */
+    #process {
+      background: var(--obsidian);
+    }
+
+    .process-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .process-header .section-tag { justify-content: center; }
+    .process-header .section-tag::before { display: none; }
+    .process-header .section-tag::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--red);
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .process-steps::after {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      z-index: 0;
+    }
+
+    .process-step {
+      padding: 0 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      background: var(--obsidian);
+      margin-bottom: 32px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .process-step:hover .step-number {
+      border-color: var(--red);
+      background: var(--red);
+    }
+
+    .step-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      color: var(--silver);
+      line-height: 1.8;
+    }
+
+    /* ─── ABOUT ─── */
+    #about {
+      background: var(--graphite);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-marquee {
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 0;
+      margin-bottom: 40px;
+    }
+
+    .marquee-inner {
+      display: flex;
+      gap: 64px;
+      animation: marquee 20s linear infinite;
+      white-space: nowrap;
+    }
+
+    .marquee-item {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--silver);
+      flex-shrink: 0;
+    }
+
+    .marquee-item span {
+      color: var(--red);
+      margin: 0 8px;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .about-copy .section-headline { margin-bottom: 24px; }
+    .about-copy .section-body { margin-bottom: 0; }
+
+    .about-visual {
+      aspect-ratio: 4/5;
+      background: var(--carbon);
+      border: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-visual-inner {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #111 0%, #1a1a1a 50%, #0d0d0d 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-visual-logo {
+      opacity: 0.07;
+    }
+
+    .about-tag-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .tag {
+      padding: 8px 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--silver);
+      background: transparent;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials {
+      background: var(--obsidian);
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .testimonials-header .section-tag { justify-content: center; }
+    .testimonials-header .section-tag::before { display: none; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .testimonial-card {
+      background: var(--obsidian);
+      padding: 40px;
+    }
+
+    .quote-mark {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 64px;
+      line-height: 0.8;
+      color: var(--red);
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .quote-text {
+      font-size: 15px;
+      color: var(--platinum);
+      line-height: 1.8;
+      margin-bottom: 32px;
+      font-style: italic;
+    }
+
+    .quote-author-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      letter-spacing: 0.06em;
+    }
+
+    .quote-author-title {
+      font-size: 12px;
+      color: var(--silver);
+      margin-top: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── CTA ─── */
+    #cta {
+      background: var(--carbon);
+      text-align: center;
+      padding: 120px 48px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .cta-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 24px;
+    }
+
+    .cta-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(48px, 6vw, 88px);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 0.92;
+      color: var(--white);
+      margin-bottom: 32px;
+    }
+
+    .cta-sub {
+      font-size: 16px;
+      color: var(--silver);
+      margin-bottom: 52px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--obsidian);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .footer-logo-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--white);
+    }
+
+    .footer-logo-sub {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      display: block;
+      margin-top: 1px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--silver);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(161,161,170,0.5);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── DIVIDER LINE ─── */
+    .h-line {
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+      margin: 0;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--obsidian); }
+    ::-webkit-scrollbar-thumb { background: var(--graphite); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      nav { padding: 0 32px; }
+      .nav-links { gap: 28px; }
+      section { padding: 80px 32px; }
+      #stats { padding: 40px 32px; }
+      .hero-content { padding: 0 32px 80px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .results-layout { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .process-steps::after { display: none; }
+      .about-layout { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 24px; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      #stats { grid-template-columns: 1fr 1fr; gap: 0; }
+      .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 24px 20px; }
+      .stat:last-child { border-bottom: none; }
+      section { padding: 64px 20px; }
+      .hero-content { padding: 0 20px 64px; }
+      .process-steps { grid-template-columns: 1fr; }
+      .results-cards { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════ NAV ════ -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="logo-mark.png" alt="P1 Creative" style="width:34px;height:auto;filter:invert(1);mix-blend-mode:screen;" />
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#fff;line-height:1;">P1 Creative</div>
+        <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:#FF3B30;line-height:1;margin-top:2px;">Marketing Agency</div>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#process">Process</a></li>
+    </ul>
+
+    <a href="#cta" class="btn-nav">Book a Call</a>
+  </nav>
+
+
+  <!-- ════ HERO ════ -->
+  <section id="hero">
+    <div class="hero-bg-art"></div>
+
+    <!-- Hero doctor image -->
+    <div class="hero-doctor-art">
+      <img src="hero.png" alt="Elite surgeon" />
+    </div>
+
+    <div class="hero-image"></div>
+
+    <div class="hero-content">
+      <h1 class="hero-headline">
+        We Turn<br/>
+        Attention<br/>
+        Into<br/>
+        Appointments
+      </h1>
+      <p class="hero-sub">
+        Content. Ads. Funnels.<br/>
+        Built for elite medical practices.
+      </p>
+      <a href="#cta" class="btn-primary">
+        Book a Call
+        <span class="arrow">↗</span>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ════ STATS BAR ════ -->
+  <div id="stats">
+    <div class="stat">
+      <div class="stat-value">$47M+</div>
+      <div class="stat-label">Generated for Clients</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">132%</div>
+      <div class="stat-label">Average Growth</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">28+</div>
+      <div class="stat-label">Medical Specialties</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">100+</div>
+      <div class="stat-label">Practices Scaled</div>
+    </div>
+  </div>
+
+
+  <!-- ════ SERVICES ════ -->
+  <section id="services">
+    <div class="services-header">
+      <div>
+        <div class="section-tag">What We Do</div>
+        <h2 class="section-headline">
+          Strategic Systems<br/>
+          Built to Convert
+        </h2>
+      </div>
+      <p class="section-body">
+        We don't do generic marketing. Every system we build is engineered for your specific practice, your specific patients, and your specific growth targets.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="16" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M13 20h14M20 13v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <div class="service-name">Content</div>
+        <p class="service-desc">High-converting short-form video built on your authority. Scripts, hooks, and frameworks that turn scrollers into scheduled appointments.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 40 40" fill="none">
+          <rect x="4" y="8" width="32" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M4 16h32" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M14 24h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <div class="service-name">Paid Ads</div>
+        <p class="service-desc">Meta and Google ad campaigns with creatives engineered to hit your cost-per-lead targets — not generic, not templated, not guesswork.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 40 40" fill="none">
+          <path d="M8 32L16 20l6 8 6-12 8 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="service-name">Funnels</div>
+        <p class="service-desc">Landing pages, VSLs, and booking systems that convert at every touchpoint. We build the full funnel — from first impression to confirmed appointment.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="h-line"></div>
+
+
+  <!-- ════ RESULTS ════ -->
+  <section id="results">
+    <div class="results-layout">
+      <div class="results-cards">
+        <div class="result-card">
+          <div class="result-number">3.2×</div>
+          <div class="result-label">Average ROAS on paid campaigns in year one</div>
+        </div>
+        <div class="result-card">
+          <div class="result-number">$840</div>
+          <div class="result-label">Average cost per booked surgical consult</div>
+        </div>
+        <div class="result-card">
+          <div class="result-number">14 days</div>
+          <div class="result-label">Average time to first inbound lead after launch</div>
+        </div>
+        <div class="result-card" style="border-bottom:none;">
+          <div class="result-number">91%</div>
+          <div class="result-label">Client retention rate after first 90 days</div>
+        </div>
+      </div>
+
+      <div class="results-copy">
+        <div class="section-tag">Proof</div>
+        <h2 class="section-headline">
+          Numbers That<br/>
+          Don't Lie
+        </h2>
+        <p class="section-body">
+          We measure one thing: revenue generated for your practice. Every campaign, every creative, every funnel is judged on one metric — did it produce booked patients?
+        </p>
+        <div style="margin-top:40px;">
+          <a href="#cta" class="btn-primary">
+            See Case Studies
+            <span class="arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════ PROCESS ════ -->
+  <section id="process">
+    <div class="process-header">
+      <div class="section-tag">How It Works</div>
+      <h2 class="section-headline" style="text-align:center;">
+        Our Process
+      </h2>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-number">01</div>
+        <div class="step-title">Strategy</div>
+        <p class="step-desc">We audit your current position, map your ideal patient, and build the full marketing architecture before a single dollar is spent.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">02</div>
+        <div class="step-title">Build</div>
+        <p class="step-desc">Funnels, creatives, and ad accounts are built to spec in 7–10 days. Every asset is reviewed and approved before launch.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">03</div>
+        <div class="step-title">Launch</div>
+        <p class="step-desc">We go live and monitor every variable in real time. First leads typically arrive within 14 days of launch.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">04</div>
+        <div class="step-title">Scale</div>
+        <p class="step-desc">What works gets amplified. We run weekly optimizations, monthly creative refreshes, and quarterly strategy reviews to compound your growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="h-line"></div>
+
+
+  <!-- ════ ABOUT ════ -->
+  <section id="about">
+
+    <div class="about-marquee">
+      <div class="marquee-inner">
+        <span class="marquee-item">Attention is easy<span>—</span>Trust is earned</span>
+        <span class="marquee-item">Content<span>·</span>Ads<span>·</span>Funnels</span>
+        <span class="marquee-item">Built for elite practices</span>
+        <span class="marquee-item">We turn attention into appointments</span>
+        <span class="marquee-item">Attention is easy<span>—</span>Trust is earned</span>
+        <span class="marquee-item">Content<span>·</span>Ads<span>·</span>Funnels</span>
+        <span class="marquee-item">Built for elite practices</span>
+        <span class="marquee-item">We turn attention into appointments</span>
+      </div>
+    </div>
+
+    <div class="about-layout">
+      <div class="about-visual">
+        <div class="about-visual-inner">
+          <svg viewBox="0 0 90 112" xmlns="http://www.w3.org/2000/svg" class="about-visual-logo" style="width:280px;height:auto;" fill="white">
+            <polygon points="26,5 53,5 82,38 53,72 26,72 26,58 43,58 43,19 26,19"/>
+            <polygon points="5,99 26,78 44,88 23,109"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="about-copy">
+        <div class="section-tag">About</div>
+        <h2 class="section-headline">
+          Built by<br/>
+          Operators,<br/>
+          Not Agencies
+        </h2>
+        <p class="section-body" style="margin-top:24px;">
+          P1 Creative was founded to solve one problem: medical practices with extraordinary results and zero digital presence. We built the system we wish existed — performance marketing that actually understands the compliance constraints, patient psychology, and trust dynamics of elite healthcare.
+        </p>
+        <div class="about-tag-row">
+          <span class="tag">HIPAA Compliant</span>
+          <span class="tag">Medical Specialties</span>
+          <span class="tag">Performance-Based</span>
+          <span class="tag">Elite Only</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════ TESTIMONIALS ════ -->
+  <section id="testimonials">
+    <div class="testimonials-header">
+      <div class="section-tag">Testimonials</div>
+      <h2 class="section-headline">What Our Clients Say</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">P1 built us a funnel that consistently books 30–40 surgical consults a month. Before them we were relying entirely on referrals. The difference is night and day.</p>
+        <div class="quote-author-name">Dr. Marcus Webb</div>
+        <div class="quote-author-title">Board Certified Plastic Surgeon — Atlanta, GA</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">Our ROAS hit 4.1× in month three. Every creative they made outperformed anything we'd tried internally. These guys understand how patients think.</p>
+        <div class="quote-author-name">Dr. Sofia Reyes</div>
+        <div class="quote-author-title">Medical Director — MedSpa Group, Miami FL</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">I was skeptical at first — every agency says the same things. P1 was the first team that came in with actual data from comparable practices and a clear plan.</p>
+        <div class="quote-author-name">Dr. James Okafor</div>
+        <div class="quote-author-title">Orthopedic Spine Specialist — Houston, TX</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════ CTA ════ -->
+  <section id="cta">
+    <p class="cta-eyebrow">Ready to scale?</p>
+    <h2 class="cta-headline">
+      Let's Build Your<br/>
+      Patient Pipeline
+    </h2>
+    <p class="cta-sub">
+      We only work with a limited number of practices at a time. Book a strategy call to see if we're a fit.
+    </p>
+    <a href="mailto:hello@p1creative.com" class="btn-primary" style="margin:0 auto;">
+      Book a Call
+      <span class="arrow">↗</span>
+    </a>
+  </section>
+
+
+  <!-- ════ FOOTER ════ -->
+  <footer>
+    <a href="#" class="footer-logo">
+      <img src="logo-mark.png" alt="P1 Creative" style="width:28px;height:auto;filter:invert(1);mix-blend-mode:screen;" />
+      <div>
+        <div class="footer-logo-text">P1 Creative</div>
+        <span class="footer-logo-sub">Marketing Agency</span>
+      </div>
+    </a>
+
+    <ul class="footer-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#cta">Book a Call</a></li>
+    </ul>
+
+    <p class="footer-copy">© 2026 P1 Creative. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
