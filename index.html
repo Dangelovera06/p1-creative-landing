@@ -222,6 +222,45 @@
   .btn-ghost:hover{ border-color:var(--white); background:rgba(255,255,255,0.04); }
   .btn-ghost .arrow{ color:var(--muted); }
 
+  /* ─── PRODUCT-HUNT-STYLE AWARD BADGE ─── */
+  .award-badge{
+    position:relative; z-index:3;
+    display:inline-block;
+    width:260px;
+    margin-bottom:22px;
+    text-decoration:none;
+    cursor:pointer;
+    transform-style:preserve-3d;
+    transition:transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change:transform;
+  }
+  .award-badge svg{ display:block; width:100%; height:auto; filter:drop-shadow(0 8px 24px rgba(243,227,172,0.18)); }
+  .award-badge:hover svg{ filter:drop-shadow(0 12px 28px rgba(243,227,172,0.32)); }
+  .award-badge .rb-layer{
+    transform-origin:center center;
+    will-change:transform;
+  }
+  @keyframes rb1 { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(10deg)} }
+  @keyframes rb2 { 0%,100%{transform:rotate(10deg)} 50%{transform:rotate(20deg)} }
+  @keyframes rb3 { 0%,100%{transform:rotate(20deg)} 50%{transform:rotate(30deg)} }
+  @keyframes rb4 { 0%,100%{transform:rotate(30deg)} 50%{transform:rotate(40deg)} }
+  @keyframes rb5 { 0%,100%{transform:rotate(40deg)} 50%{transform:rotate(50deg)} }
+  @keyframes rb6 { 0%,100%{transform:rotate(50deg)} 50%{transform:rotate(60deg)} }
+  @keyframes rb7 { 0%,100%{transform:rotate(60deg)} 50%{transform:rotate(70deg)} }
+  @keyframes rb8 { 0%,100%{transform:rotate(70deg)} 50%{transform:rotate(80deg)} }
+  @keyframes rb9 { 0%,100%{transform:rotate(80deg)} 50%{transform:rotate(90deg)} }
+  @keyframes rb10 { 0%,100%{transform:rotate(90deg)} 50%{transform:rotate(100deg)} }
+  .award-badge .rb-1{ animation:rb1 5s infinite; }
+  .award-badge .rb-2{ animation:rb2 5s infinite; }
+  .award-badge .rb-3{ animation:rb3 5s infinite; }
+  .award-badge .rb-4{ animation:rb4 5s infinite; }
+  .award-badge .rb-5{ animation:rb5 5s infinite; }
+  .award-badge .rb-6{ animation:rb6 5s infinite; }
+  .award-badge .rb-7{ animation:rb7 5s infinite; }
+  .award-badge .rb-8{ animation:rb8 5s infinite; }
+  .award-badge .rb-9{ animation:rb9 5s infinite; }
+  .award-badge .rb-10{ animation:rb10 5s infinite; }
+
   /* ─── HAND-DRAWN CIRCLE AROUND HERO CTA ─── */
   .cta-handdrawn{
     position:relative;
@@ -299,10 +338,81 @@
     font-weight:500;
   }
   .logos-scroll{
+    position:relative;
     width:100%;
     overflow:hidden;
-    -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
-    mask-image:linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  }
+  /* progressive blur edges — stacked backdrop-filter layers */
+  .logos-fade{
+    position:absolute; top:0; bottom:0;
+    width:200px;
+    pointer-events:none;
+    z-index:5;
+  }
+  .logos-fade-left{ left:0; }
+  .logos-fade-right{ right:0; }
+  .logos-fade .lf{
+    position:absolute; inset:0;
+  }
+  /* left edge: 6 layers, each progressively more blurred and unmasked closer to edge */
+  .logos-fade-left .lf:nth-child(1){
+    backdrop-filter:blur(0.5px); -webkit-backdrop-filter:blur(0.5px);
+    -webkit-mask-image:linear-gradient(to left, transparent 0%, #000 14%, #000 28%, transparent 42%);
+    mask-image:linear-gradient(to left, transparent 0%, #000 14%, #000 28%, transparent 42%);
+  }
+  .logos-fade-left .lf:nth-child(2){
+    backdrop-filter:blur(1.5px); -webkit-backdrop-filter:blur(1.5px);
+    -webkit-mask-image:linear-gradient(to left, transparent 12%, #000 26%, #000 40%, transparent 54%);
+    mask-image:linear-gradient(to left, transparent 12%, #000 26%, #000 40%, transparent 54%);
+  }
+  .logos-fade-left .lf:nth-child(3){
+    backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px);
+    -webkit-mask-image:linear-gradient(to left, transparent 24%, #000 38%, #000 52%, transparent 66%);
+    mask-image:linear-gradient(to left, transparent 24%, #000 38%, #000 52%, transparent 66%);
+  }
+  .logos-fade-left .lf:nth-child(4){
+    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+    -webkit-mask-image:linear-gradient(to left, transparent 36%, #000 50%, #000 64%, transparent 78%);
+    mask-image:linear-gradient(to left, transparent 36%, #000 50%, #000 64%, transparent 78%);
+  }
+  .logos-fade-left .lf:nth-child(5){
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    -webkit-mask-image:linear-gradient(to left, transparent 48%, #000 62%, #000 76%, transparent 90%);
+    mask-image:linear-gradient(to left, transparent 48%, #000 62%, #000 76%, transparent 90%);
+  }
+  .logos-fade-left .lf:nth-child(6){
+    background:linear-gradient(to right, var(--dark) 0%, transparent 100%);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  }
+  /* right edge: mirrored */
+  .logos-fade-right .lf:nth-child(1){
+    backdrop-filter:blur(0.5px); -webkit-backdrop-filter:blur(0.5px);
+    -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 14%, #000 28%, transparent 42%);
+    mask-image:linear-gradient(to right, transparent 0%, #000 14%, #000 28%, transparent 42%);
+  }
+  .logos-fade-right .lf:nth-child(2){
+    backdrop-filter:blur(1.5px); -webkit-backdrop-filter:blur(1.5px);
+    -webkit-mask-image:linear-gradient(to right, transparent 12%, #000 26%, #000 40%, transparent 54%);
+    mask-image:linear-gradient(to right, transparent 12%, #000 26%, #000 40%, transparent 54%);
+  }
+  .logos-fade-right .lf:nth-child(3){
+    backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px);
+    -webkit-mask-image:linear-gradient(to right, transparent 24%, #000 38%, #000 52%, transparent 66%);
+    mask-image:linear-gradient(to right, transparent 24%, #000 38%, #000 52%, transparent 66%);
+  }
+  .logos-fade-right .lf:nth-child(4){
+    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+    -webkit-mask-image:linear-gradient(to right, transparent 36%, #000 50%, #000 64%, transparent 78%);
+    mask-image:linear-gradient(to right, transparent 36%, #000 50%, #000 64%, transparent 78%);
+  }
+  .logos-fade-right .lf:nth-child(5){
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    -webkit-mask-image:linear-gradient(to right, transparent 48%, #000 62%, #000 76%, transparent 90%);
+    mask-image:linear-gradient(to right, transparent 48%, #000 62%, #000 76%, transparent 90%);
+  }
+  .logos-fade-right .lf:nth-child(6){
+    background:linear-gradient(to left, var(--dark) 0%, transparent 100%);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
   }
   .logos-track{
     display:flex;
@@ -1188,6 +1298,38 @@
   <div class="hero-bg"></div>
   <div class="hero-vignette"></div>
   <div class="hero-ambient"></div>
+  <a href="#work" class="award-badge" id="awardBadge" aria-label="Most Converting Videos — see featured work">
+    <svg viewBox="0 0 260 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <filter id="badgeBlur">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+        </filter>
+        <mask id="badgeMask">
+          <rect width="260" height="54" fill="white" rx="10" />
+        </mask>
+      </defs>
+      <rect width="260" height="54" rx="10" fill="#f3e3ac" />
+      <rect x="4" y="4" width="252" height="46" rx="8" fill="transparent" stroke="#bbb" stroke-width="1" />
+      <text font-family="Helvetica, Arial, sans-serif" font-size="9" font-weight="700" fill="#666" x="52" y="20" letter-spacing="0.5">P1 CREATIVE STUDIO</text>
+      <text font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#444" x="52" y="40">Most Converting Videos</text>
+      <g transform="translate(10, 11)">
+        <circle cx="16" cy="16" r="15.5" fill="#666"/>
+        <polygon points="13,9.5 23.5,16 13,22.5" fill="#f3e3ac"/>
+      </g>
+      <g mask="url(#badgeMask)" style="mix-blend-mode:overlay">
+        <g class="rb-layer rb-1"><polygon points="0,0 260,54 260,0 0,54" fill="hsl(358,100%,62%)" filter="url(#badgeBlur)" opacity="0.5" /></g>
+        <g class="rb-layer rb-2"><polygon points="0,0 260,54 260,0 0,54" fill="hsl(30,100%,50%)" filter="url(#badgeBlur)" opacity="0.5" /></g>
+        <g class="rb-layer rb-3"><polygon points="0,0 260,54 260,0 0,54" fill="hsl(60,100%,50%)" filter="url(#badgeBlur)" opacity="0.5" /></g>
+        <g class="rb-layer rb-4"><polygon points="0,0 260,54 260,0 0,54" fill="hsl(96,100%,50%)" filter="url(#badgeBlur)" opacity="0.5" /></g>
+        <g class="rb-layer rb-5"><polygon points="0,0 260,54 260,0 0,54" fill="hsl(233,85%,47%)" filter="url(#badgeBlur)" opacity="0.5" /></g>
+        <g class="rb-layer rb-6"><polygon points="0,0 260,54 260,0 0,54" fill="hsl(271,85%,47%)" filter="url(#badgeBlur)" opacity="0.5" /></g>
+        <g class="rb-layer rb-7"><polygon points="0,0 260,54 260,0 0,54" fill="hsl(300,60%,55%)" filter="url(#badgeBlur)" opacity="0.5" /></g>
+        <g class="rb-layer rb-8"><polygon points="0,0 260,54 260,0 0,54" fill="hsl(0,100%,70%)" filter="url(#badgeBlur)" opacity="0.4" /></g>
+        <g class="rb-layer rb-9"><polygon points="0,0 260,54 260,0 0,54" fill="hsl(200,100%,65%)" filter="url(#badgeBlur)" opacity="0.4" /></g>
+        <g class="rb-layer rb-10"><polygon points="0,0 260,54 260,0 0,54" fill="white" filter="url(#badgeBlur)" opacity="0.5" /></g>
+      </g>
+    </svg>
+  </a>
   <div class="hero-proof">
     <div class="hero-avatars">
       <img class="hero-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="" />
@@ -1225,6 +1367,14 @@
 <section id="logos">
   <p class="logos-label">Trusted by elite practices across dentistry, med spa, plastic surgery &amp; wellness</p>
   <div class="logos-scroll">
+    <div class="logos-fade logos-fade-left">
+      <div class="lf"></div><div class="lf"></div><div class="lf"></div>
+      <div class="lf"></div><div class="lf"></div><div class="lf"></div>
+    </div>
+    <div class="logos-fade logos-fade-right">
+      <div class="lf"></div><div class="lf"></div><div class="lf"></div>
+      <div class="lf"></div><div class="lf"></div><div class="lf"></div>
+    </div>
     <div class="logos-track">
       <img src="logos/Palm-City-Dental-Arts-Logo.png" alt="Palm City Dental Arts" class="logo-img" />
       <img src="logos/bayshore.png" alt="Bayshore" class="logo-img has-bg" />
@@ -1821,6 +1971,27 @@
           items.forEach(other => { if (other !== item) other.open = false; });
         }
       });
+    });
+  })();
+
+  // Award Badge — 3D mouse-tilt (simplified matrix3d effect)
+  (() => {
+    const badge = document.getElementById('awardBadge');
+    if (!badge) return;
+    let raf = null;
+    badge.addEventListener('mousemove', (e) => {
+      const rect = badge.getBoundingClientRect();
+      const x = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+      const y = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        badge.style.transform =
+          `perspective(700px) rotateX(${(-y * 7).toFixed(2)}deg) rotateY(${(x * 9).toFixed(2)}deg) scale(1.03)`;
+      });
+    });
+    badge.addEventListener('mouseleave', () => {
+      if (raf) cancelAnimationFrame(raf);
+      badge.style.transform = '';
     });
   })();
 </script>
