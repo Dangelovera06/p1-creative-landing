@@ -222,6 +222,41 @@
   .btn-ghost:hover{ border-color:var(--white); background:rgba(255,255,255,0.04); }
   .btn-ghost .arrow{ color:var(--muted); }
 
+  /* ─── HAND-DRAWN CIRCLE AROUND HERO CTA ─── */
+  .cta-handdrawn{
+    position:relative;
+    display:inline-flex; align-items:center; justify-content:center;
+  }
+  .cta-handdrawn-svg{
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%, -50%);
+    width:172%;
+    height:280%;
+    pointer-events:none;
+    overflow:visible;
+    z-index:1;
+  }
+  .cta-handdrawn-svg path{
+    fill:none;
+    stroke:var(--red);
+    stroke-width:5;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    vector-effect:non-scaling-stroke;
+    stroke-dasharray:1;
+    stroke-dashoffset:1;
+    animation:handDraw 2.5s cubic-bezier(0.43, 0.13, 0.23, 0.96) 0.6s forwards;
+    filter:drop-shadow(0 0 8px rgba(255,59,48,0.55));
+  }
+  .cta-handdrawn .btn-primary{
+    position:relative;
+    z-index:2;
+  }
+  @keyframes handDraw{
+    to{ stroke-dashoffset:0; }
+  }
+
   /* ─── HERO PROOF ROW ─── */
   .hero-proof{
     position:relative; z-index:2;
@@ -1175,7 +1210,12 @@
     into booked consultations for elite medical practices.
   </p>
   <div class="hero-ctas">
-    <a href="https://calendly.com/p1creative/30min" target="_blank" rel="noopener" class="btn-primary">Book a Strategy Call</a>
+    <div class="cta-handdrawn">
+      <svg class="cta-handdrawn-svg" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
+        <path pathLength="1" d="M 950 90 C 1250 300, 1050 480, 600 520 C 250 520, 150 480, 150 300 C 150 120, 350 80, 600 80 C 850 80, 950 180, 950 180" />
+      </svg>
+      <a href="https://calendly.com/p1creative/30min" target="_blank" rel="noopener" class="btn-primary">Book a Strategy Call</a>
+    </div>
     <a href="#results" class="btn-ghost">See Our Results <span class="arrow">›</span></a>
   </div>
 
