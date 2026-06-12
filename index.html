@@ -293,6 +293,15 @@
   .logo-img:hover{
     filter:brightness(0) invert(1) opacity(0.95);
   }
+  /* logos that have an opaque background (JPEG, colored fill) — softer treatment */
+  .logo-img.has-bg{
+    height:54px;
+    filter:grayscale(1) brightness(0.75) opacity(0.5);
+    mix-blend-mode:lighten;
+  }
+  .logo-img.has-bg:hover{
+    filter:grayscale(1) brightness(1) opacity(0.85);
+  }
 
   /* ─── SECTION SHARED ─── */
   section{ position:relative; }
@@ -1158,16 +1167,18 @@
   <div class="logos-scroll">
     <div class="logos-track">
       <img src="logos/Palm-City-Dental-Arts-Logo.png" alt="Palm City Dental Arts" class="logo-img" />
-      <img src="logos/Bayshore-Icon.webp" alt="Bayshore" class="logo-img" />
+      <img src="logos/bayshore.png" alt="Bayshore" class="logo-img has-bg" />
       <img src="logos/6866c5eaa72ee44e318ad756_MINTDC_Color_Logo.svg" alt="Mint DC" class="logo-img" />
+      <img src="logos/xs-medspa.jpeg" alt="XS MedSpa" class="logo-img has-bg" />
       <img src="logos/dentist-plant-city1.webp" alt="Plant City Dental" class="logo-img" />
       <img src="logos/v5qMvNHblpVOx5cJmiPtiRYK10.avif" alt="Client" class="logo-img" />
       <img src="logos/Final-05-07-removebg-preview.png" alt="Client" class="logo-img" />
       <img src="logos/Transparent.png" alt="Client" class="logo-img" />
       <!-- duplicate set for seamless loop -->
       <img src="logos/Palm-City-Dental-Arts-Logo.png" alt="" class="logo-img" aria-hidden="true" />
-      <img src="logos/Bayshore-Icon.webp" alt="" class="logo-img" aria-hidden="true" />
+      <img src="logos/bayshore.png" alt="" class="logo-img has-bg" aria-hidden="true" />
       <img src="logos/6866c5eaa72ee44e318ad756_MINTDC_Color_Logo.svg" alt="" class="logo-img" aria-hidden="true" />
+      <img src="logos/xs-medspa.jpeg" alt="" class="logo-img has-bg" aria-hidden="true" />
       <img src="logos/dentist-plant-city1.webp" alt="" class="logo-img" aria-hidden="true" />
       <img src="logos/v5qMvNHblpVOx5cJmiPtiRYK10.avif" alt="" class="logo-img" aria-hidden="true" />
       <img src="logos/Final-05-07-removebg-preview.png" alt="" class="logo-img" aria-hidden="true" />
