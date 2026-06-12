@@ -222,32 +222,77 @@
   .btn-ghost:hover{ border-color:var(--white); background:rgba(255,255,255,0.04); }
   .btn-ghost .arrow{ color:var(--muted); }
 
-  /* ─── LOGO BAR ─── */
+  /* ─── HERO PROOF ROW ─── */
+  .hero-proof{
+    position:relative; z-index:2;
+    display:inline-flex; align-items:center; gap:18px;
+    margin-bottom:24px;
+    padding:8px 16px 8px 12px;
+    background:rgba(0,0,0,0.45);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:99px;
+  }
+  .hero-avatars{ display:flex; }
+  .hero-avatar{
+    width:34px; height:34px; border-radius:50%;
+    border:2px solid #0a0a0a;
+    background:#1a1a1a;
+    margin-left:-10px;
+    object-fit:cover;
+    object-position:center top;
+  }
+  .hero-avatar:first-child{ margin-left:0; }
+  .hero-proof-text{ display:flex; flex-direction:column; gap:2px; align-items:flex-start; }
+  .hero-proof-stars{ color:var(--red); font-size:11px; letter-spacing:2px; line-height:1; }
+  .hero-proof-count{ font-size:12px; color:var(--muted); font-weight:500; }
+
+  /* ─── LOGO MARQUEE ─── */
   #logos{
-    padding:48px 24px;
+    padding:56px 0 64px;
     background:var(--dark);
     border-top:1px solid var(--border);
     border-bottom:1px solid var(--border);
+    overflow:hidden;
   }
   .logos-label{
     text-align:center;
     font-size:11px; color:var(--muted);
     letter-spacing:0.18em; text-transform:uppercase;
-    margin-bottom:32px;
+    margin-bottom:36px;
     font-weight:500;
   }
-  .logos-row{
-    display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
-    gap:48px; max-width:1100px; margin:0 auto;
+  .logos-scroll{
+    width:100%;
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-image:linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
   }
-  .logo-pill{
-    font-family:'Geist', 'PP Neue Montreal', sans-serif;
-    font-size:15px; font-weight:600;
-    letter-spacing:-0.005em;
-    color:rgba(255,255,255,0.4);
-    transition:color 0.2s;
+  .logos-track{
+    display:flex;
+    align-items:center;
+    width:max-content;
+    gap:80px;
+    animation:logoScroll 35s linear infinite;
   }
-  .logo-pill:hover{ color:rgba(255,255,255,0.7); }
+  #logos:hover .logos-track{ animation-play-state:paused; }
+  @keyframes logoScroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  .logo-img{
+    height:48px;
+    width:auto;
+    max-width:160px;
+    object-fit:contain;
+    flex-shrink:0;
+    filter:brightness(0) invert(1) opacity(0.55);
+    transition:filter 0.35s;
+  }
+  .logo-img:hover{
+    filter:brightness(0) invert(1) opacity(0.95);
+  }
 
   /* ─── SECTION SHARED ─── */
   section{ position:relative; }
@@ -699,6 +744,117 @@
   }
   .bento-card:hover .bento-cta{ opacity:1; color:var(--red); }
 
+  /* ─── COMPARISON ─── */
+  #compare{ padding:120px 24px; background:var(--dark); }
+  .compare-head{ margin-bottom:64px; }
+  .compare-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    max-width:1000px; margin:0 auto;
+  }
+  .compare-col{
+    position:relative;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:36px 32px;
+    overflow:hidden;
+  }
+  .compare-col.us{
+    border-color:var(--red-border);
+  }
+  .compare-col.us::before{
+    content:'';
+    position:absolute;
+    top:-60px; right:-60px;
+    width:260px; height:260px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(255,59,48,0.3), transparent 70%);
+    filter:blur(40px);
+    pointer-events:none;
+  }
+  .compare-head-row{
+    font-family:'Geist','PP Neue Montreal',sans-serif;
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:24px;
+    letter-spacing:-0.015em;
+    position:relative; z-index:2;
+  }
+  .compare-col.them .compare-head-row{ color:var(--muted); }
+  .compare-list{
+    list-style:none;
+    position:relative; z-index:2;
+  }
+  .compare-list li{
+    display:flex; align-items:center; gap:14px;
+    padding:14px 0;
+    font-size:15.5px;
+    color:var(--white);
+    border-bottom:1px solid var(--border);
+  }
+  .compare-list li:last-child{ border-bottom:none; }
+  .compare-col.them .compare-list li{ color:var(--muted); }
+  .compare-icon{
+    width:22px; height:22px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+    font-size:11px; font-weight:700;
+  }
+  .compare-icon.x{
+    background:rgba(255,255,255,0.06);
+    color:var(--dim);
+  }
+  .compare-icon.check{
+    background:var(--red);
+    color:#fff;
+  }
+
+  /* ─── FAQ ─── */
+  #faq{ padding:120px 24px 100px; background:var(--dark); }
+  .faq-head{ margin-bottom:56px; }
+  .faq-list{
+    max-width:860px; margin:0 auto;
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .faq-item{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    overflow:hidden;
+    transition:border-color 0.3s;
+  }
+  .faq-item:hover{ border-color:var(--border-bright); }
+  .faq-item summary{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 28px;
+    cursor:pointer;
+    list-style:none;
+    font-size:15.5px;
+    font-weight:500;
+    color:var(--white);
+    letter-spacing:-0.01em;
+    font-family:'Geist','PP Neue Montreal',sans-serif;
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-toggle{
+    width:28px; height:28px;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted);
+    font-size:18px;
+    font-weight:300;
+    transition:transform 0.25s, color 0.25s;
+  }
+  .faq-item[open] .faq-toggle{ transform:rotate(45deg); color:var(--red); }
+  .faq-body{
+    padding:0 28px 24px;
+    font-size:14.5px;
+    color:var(--muted);
+    line-height:1.65;
+  }
+
   /* ─── HOW IT WORKS ─── */
   #process{ padding:0 32px 120px; background:var(--dark); }
   .process-kicker{ margin-bottom:64px; }
@@ -816,6 +972,10 @@
     color:var(--white);
     flex-shrink:0;
   }
+  .test-avatar-img{
+    object-fit:cover;
+    object-position:center top;
+  }
   .test-name{
     font-size:14px; font-weight:600; color:var(--white);
   }
@@ -915,7 +1075,8 @@
     .bento-grid{ grid-template-columns:1fr; }
     .bento-card.span-2{ grid-column:span 1; }
     .video-trio{ grid-template-columns:1fr; gap:16px; max-width:480px; }
-    #services, #results, #cta-final, #capabilities, #work{ padding-left:20px; padding-right:20px; }
+    .compare-grid{ grid-template-columns:1fr; }
+    #services, #results, #cta-final, #capabilities, #work, #compare, #faq{ padding-left:20px; padding-right:20px; }
     .btn-nav{ display:none; }
     /* mobile hero — keep surgeon face in view */
     .hero-bg{
@@ -963,6 +1124,18 @@
   <div class="hero-bg"></div>
   <div class="hero-vignette"></div>
   <div class="hero-ambient"></div>
+  <div class="hero-proof">
+    <div class="hero-avatars">
+      <img class="hero-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="" />
+      <img class="hero-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="" />
+      <img class="hero-avatar" src="https://randomuser.me/api/portraits/men/75.jpg" alt="" />
+      <img class="hero-avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt="" />
+    </div>
+    <div class="hero-proof-text">
+      <div class="hero-proof-stars">★★★★★</div>
+      <div class="hero-proof-count">100+ practices scaled</div>
+    </div>
+  </div>
   <div class="hero-badge">Patient Acquisition System</div>
   <h1 class="hero-h1">
     Marketing That <span class="gradient-text">Books</span><br/>
@@ -979,15 +1152,27 @@
 
 </section>
 
-<!-- ═══════════════ LOGOS ═══════════════ -->
+<!-- ═══════════════ LOGOS MARQUEE ═══════════════ -->
 <section id="logos">
   <p class="logos-label">Trusted by elite practices across dentistry, med spa, plastic surgery &amp; wellness</p>
-  <div class="logos-row">
-    <span class="logo-pill">Revive MedSpa</span>
-    <span class="logo-pill">LuxDerm</span>
-    <span class="logo-pill">Apex Dental</span>
-    <span class="logo-pill">Aurora Aesthetics</span>
-    <span class="logo-pill">Pinnacle Surgical</span>
+  <div class="logos-scroll">
+    <div class="logos-track">
+      <img src="logos/Palm-City-Dental-Arts-Logo.png" alt="Palm City Dental Arts" class="logo-img" />
+      <img src="logos/Bayshore-Icon.webp" alt="Bayshore" class="logo-img" />
+      <img src="logos/6866c5eaa72ee44e318ad756_MINTDC_Color_Logo.svg" alt="Mint DC" class="logo-img" />
+      <img src="logos/dentist-plant-city1.webp" alt="Plant City Dental" class="logo-img" />
+      <img src="logos/v5qMvNHblpVOx5cJmiPtiRYK10.avif" alt="Client" class="logo-img" />
+      <img src="logos/Final-05-07-removebg-preview.png" alt="Client" class="logo-img" />
+      <img src="logos/Transparent.png" alt="Client" class="logo-img" />
+      <!-- duplicate set for seamless loop -->
+      <img src="logos/Palm-City-Dental-Arts-Logo.png" alt="" class="logo-img" aria-hidden="true" />
+      <img src="logos/Bayshore-Icon.webp" alt="" class="logo-img" aria-hidden="true" />
+      <img src="logos/6866c5eaa72ee44e318ad756_MINTDC_Color_Logo.svg" alt="" class="logo-img" aria-hidden="true" />
+      <img src="logos/dentist-plant-city1.webp" alt="" class="logo-img" aria-hidden="true" />
+      <img src="logos/v5qMvNHblpVOx5cJmiPtiRYK10.avif" alt="" class="logo-img" aria-hidden="true" />
+      <img src="logos/Final-05-07-removebg-preview.png" alt="" class="logo-img" aria-hidden="true" />
+      <img src="logos/Transparent.png" alt="" class="logo-img" aria-hidden="true" />
+    </div>
   </div>
 </section>
 
@@ -1343,6 +1528,77 @@
   </div>
 </section>
 
+<!-- ═══════════════ COMPARISON — WHY WORK WITH US ═══════════════ -->
+<section id="compare">
+  <div class="compare-head">
+    <p class="section-kicker">Comparison</p>
+    <h2 class="section-title">
+      But, why would you want<br/>
+      to <span class="gradient-text">work</span> with us?
+    </h2>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-col them">
+      <div class="compare-head-row">Other Agencies</div>
+      <ul class="compare-list">
+        <li><span class="compare-icon x">✕</span>Slow communication</li>
+        <li><span class="compare-icon x">✕</span>Single-channel approach</li>
+        <li><span class="compare-icon x">✕</span>Outdated growth strategies</li>
+        <li><span class="compare-icon x">✕</span>No medical-vertical experience</li>
+        <li><span class="compare-icon x">✕</span>Outsourced to mediocre talent</li>
+      </ul>
+    </div>
+    <div class="compare-col us">
+      <div class="compare-head-row">P1 Creative</div>
+      <ul class="compare-list">
+        <li><span class="compare-icon check">✓</span>Direct, daily communication</li>
+        <li><span class="compare-icon check">✓</span>Omni-channel acquisition system</li>
+        <li><span class="compare-icon check">✓</span>Performance-tested creative</li>
+        <li><span class="compare-icon check">✓</span>Medical-vertical expertise</li>
+        <li><span class="compare-icon check">✓</span>In-house team, 10+ years</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section id="faq">
+  <div class="faq-head">
+    <p class="section-kicker">FAQ</p>
+    <h2 class="section-title">
+      Got <span class="gradient-text">questions?</span>
+    </h2>
+  </div>
+
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>How do you tailor Google Ads strategies for different practices?<span class="faq-toggle">+</span></summary>
+      <div class="faq-body">We start with a deep audit of your local market, competitor activity, and patient acquisition costs. Then we build campaigns around the specific procedures, treatments, and patient demographics that drive your highest-LTV bookings — never a one-size-fits-all template.</div>
+    </details>
+    <details class="faq-item">
+      <summary>What's unique about your Meta Ads approach?<span class="faq-toggle">+</span></summary>
+      <div class="faq-body">Performance creative built to your audience — never templated, always tested against real metrics. We run a hook bank of 12+ ad concepts each month and let the data pick the winners, then we double down on what books.</div>
+    </details>
+    <details class="faq-item">
+      <summary>How do you handle content production?<span class="faq-toggle">+</span></summary>
+      <div class="faq-body">We hand you a complete monthly content plan — scripts, shot lists, lighting and camera angles, captions, and edits. Then we either produce on-site, or guide your team to film 30+ pieces in a single day with our director-led system.</div>
+    </details>
+    <details class="faq-item">
+      <summary>How do you choose ad formats and placements across platforms?<span class="faq-toggle">+</span></summary>
+      <div class="faq-body">We optimize against booked consultations, not clicks or leads. The platform mix is dynamic — most months we run Meta + Google, but we'll fold in YouTube or TikTok if your patient demo lives there.</div>
+    </details>
+    <details class="faq-item">
+      <summary>What reporting and analytics do you provide?<span class="faq-toggle">+</span></summary>
+      <div class="faq-body">Weekly dashboards that surface the only metric that matters — qualified consultations booked. Plus monthly strategy calls to review what's working, what's not, and where the next 30 days of testing is headed.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Do you offer ongoing optimization and management?<span class="faq-toggle">+</span></summary>
+      <div class="faq-body">Yes — every retainer includes daily campaign optimization, weekly creative testing, monthly strategic reviews, and 24/7 Slack access to your dedicated account team.</div>
+    </details>
+  </div>
+</section>
+
 <!-- ═══════════════ PROCESS ═══════════════ -->
 <section id="process">
   <p class="section-kicker process-kicker">How It Works</p>
@@ -1408,7 +1664,7 @@
       <div class="test-stars">★★★★★</div>
       <p class="test-quote">"P1 built us a funnel that consistently delivers 30–40 surgical consults a month. Before them we were 100% referral-dependent. The transformation was unlike anything I expected."</p>
       <div class="test-author">
-        <div class="test-avatar">MW</div>
+        <img class="test-avatar test-avatar-img" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. Marcus Webb" />
         <div>
           <div class="test-name">Dr. Marcus Webb</div>
           <div class="test-role">Plastic Surgeon — Atlanta, GA</div>
@@ -1420,7 +1676,7 @@
       <div class="test-stars">★★★★★</div>
       <p class="test-quote">"Our ROAS hit 4.1× in month three. Every creative they produced outperformed anything we tried internally. They're the first team that actually understands how medical patients make decisions."</p>
       <div class="test-author">
-        <div class="test-avatar">SR</div>
+        <img class="test-avatar test-avatar-img" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Dr. Sofia Reyes" />
         <div>
           <div class="test-name">Dr. Sofia Reyes</div>
           <div class="test-role">Medical Director — Luminary MedSpa, Miami</div>
@@ -1432,7 +1688,7 @@
       <div class="test-stars">★★★★★</div>
       <p class="test-quote">"I was skeptical — every agency says the same things. P1 was the first team that walked in with data from comparable practices, a clear framework, and zero vague promises. They delivered."</p>
       <div class="test-author">
-        <div class="test-avatar">JO</div>
+        <img class="test-avatar test-avatar-img" src="https://randomuser.me/api/portraits/men/75.jpg" alt="Dr. James Okafor" />
         <div>
           <div class="test-name">Dr. James Okafor</div>
           <div class="test-role">Spine Specialist — Houston, TX</div>
@@ -1474,6 +1730,20 @@
     </ul>
   </div>
 </footer>
+
+<script>
+  // FAQ accordion — exclusive toggle (open one closes others)
+  (() => {
+    const items = document.querySelectorAll('.faq-item');
+    items.forEach(item => {
+      item.addEventListener('toggle', () => {
+        if (item.open) {
+          items.forEach(other => { if (other !== item) other.open = false; });
+        }
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
